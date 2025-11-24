@@ -358,9 +358,13 @@ Este proyecto es parte de un trabajo académico.
 
 ## 📞 Contacto
 
-Para dudas técnicas, consultar con el docente durante las horas de clase.
+**Nombre:** Santiago Bartolo Sansón  
+**Correo:** sa.bartolo22@ciaf.edu.co  
+**Carrera:** Ingeniería en Desarrollo de Software — 5º semestre  
+**GitHub:** SantiBartolo
 
----
+
+**Desarrollado para Programación 4 - Universidad La CIAF**
 
 **Desarrollado para Programación 4 - Universidad**
 
