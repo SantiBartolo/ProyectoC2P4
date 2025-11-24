@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro de Estudiantes</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<header>
+    <h1>Registro de Estudiantes</h1>
+    <div class="actions">
+        <a class="btn primary" th:href="@{/students/new}">+ Nuevo Estudiante</a>
+        <a class="btn secondary" th:href="@{/api/students}" target="_blank">Ver API (JSON)</a>
+    </div>
+</header>
+
+<section class="messages">
+    <div class="alert success" th:if="${successMessage}" th:text="${successMessage}"></div>
+    <div class="alert error" th:if="${errorMessage}" th:text="${errorMessage}"></div>
+</section>
+
+<section>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Programa</th>
+            <th>Documento</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="student : ${students}">
+            <td th:text="${student.id}">1</td>
+            <td th:text="${student.firstName + ' ' + student.lastName}">Nombre</td>
+            <td th:text="${student.email}">email</td>
+            <td th:text="${student.program}">Programa</td>
+            <td th:text="${student.documentNumber}">Documento</td>
+            <td class="table-actions">
+                <a class="btn small" th:href="@{'/students/' + ${student.id} + '/edit'}">Editar</a>
+                <form th:action="@{'/students/' + ${student.id} + '/delete'}" method="post"
+                      onsubmit="return confirm('¿Seguro de eliminar este estudiante?');">
+                    <button type="submit" class="btn danger small">Eliminar</button>
+                </form>
+                <a class="btn secondary small"
+                   th:href="@{'/api/students/' + ${student.id} + '/certificate'}"
+                   target="_blank">PDF</a>
+            </td>
+        </tr>
+        <tr th:if="${#lists.isEmpty(students)}">
+            <td colspan="6" class="empty-state">No hay estudiantes registrados.</td>
+        </tr>
+        </tbody>
+    </table>
+</section>
+</body>
+</html>
+
