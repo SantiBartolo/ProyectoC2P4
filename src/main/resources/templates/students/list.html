@@ -44,9 +44,9 @@
                       onsubmit="return confirm('¿Seguro de eliminar este estudiante?');">
                     <button type="submit" class="btn danger small">Eliminar</button>
                 </form>
-                <a class="btn secondary small"
-                   th:href="@{'/api/students/' + ${student.id} + '/certificate'}"
-                   target="_blank">PDF</a>
+                <form th:action="@{'/api/students/' + ${student.id} + '/certificate'}" method="post" target="_blank" style="display: inline;">
+                    <button type="submit" class="btn secondary small">PDF</button>
+                </form>
             </td>
         </tr>
         <tr th:if="${#lists.isEmpty(students)}">
